@@ -2,6 +2,14 @@ require "pry"
 require "./values.rb"
 
 class ChocolateDistributor
+  def distribute_chocolate(input)
+    test_cases = parse_test_cases(input)
+    min_diffs = min_diffs(test_cases)
+    format_output(min_diffs)
+  end
+
+  private
+
   def parse_test_cases(input)
     input_array = input.split("\n")
     input_array.shift.to_i
@@ -36,12 +44,6 @@ class ChocolateDistributor
   
       possible_diffs.min
     end
-  end
-
-  def distribute_chocolate(input)
-    test_cases = parse_test_cases(input)
-    min_diffs = min_diffs(test_cases)
-    format_output(min_diffs)
   end
 end
 
