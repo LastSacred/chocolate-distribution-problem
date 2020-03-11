@@ -46,5 +46,3 @@ class ChocolateDistributor
     end
   end
 end
-
-puts ChocolateDistributor.new.distribute_chocolate(INPUT) == EXPECTED_OUTPUT
