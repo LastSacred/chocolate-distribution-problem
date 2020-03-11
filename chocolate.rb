@@ -34,15 +34,15 @@ class ChocolateDistributor
       packets = test_case[:packets].sort
       student_count = test_case[:student_count]
       last_packet = student_count - 1
-      possible_diffs = []
       
       step = 0
       until student_count + step > packets.count
-        possible_diffs << packets[last_packet + step] - packets[step]
+        diff = packets[last_packet + step] - packets[step]
+        min_diff = diff if !min_diff || diff < min_diff
         step += 1
       end
   
-      possible_diffs.min
+      min_diff
     end
   end
 end
