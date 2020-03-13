@@ -1,5 +1,3 @@
-require "pry"
-require "./values.rb"
 
 class ChocolateDistributor
   def distribute_chocolate(input)
