@@ -1,14 +1,16 @@
-
 class ChocolateDistributor
+  attr_accessor :input, :test_cases, :min_diffs 
+
   def distribute_chocolate(input)
-    test_cases = parse_test_cases(input)
-    min_diffs = min_diffs(test_cases)
-    format_output(min_diffs)
+    self.input = input
+    parse_test_cases
+    find_min_diffs
+    format_output
   end
 
   private
 
-  def parse_test_cases(input)
+  def parse_test_cases
     input_array = input.split("\n")
     input_array.shift.to_i
     test_cases = []
@@ -20,15 +22,15 @@ class ChocolateDistributor
       test_cases << {packets: packets, student_count: students_count}
     end
   
-    test_cases
+    self.test_cases = test_cases
   end
   
-  def format_output(min_diffs)
+  def format_output
     min_diffs.join("\n")
   end
   
-  def min_diffs(test_cases)
-    test_cases.map do |test_case|
+  def find_min_diffs
+    self.min_diffs = test_cases.map do |test_case|
       packets = test_case[:packets].sort
       student_count = test_case[:student_count]
       last_packet = student_count - 1
